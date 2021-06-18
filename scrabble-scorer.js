@@ -56,20 +56,23 @@ function vowelBonusScore(word){
   const vowels = ['A', 'E', 'I', 'O', 'U'];
 
  for (let i = 0; i < word.length; i++) {
-  if (word[i].includes(vowels)) {
-			vowelPoints + 3;
+  if (word[i] === "A" || word[i] === "E" ||word[i] === "I" ||word[i] === "O" ||word[i] === "U") {
+			vowelPoints = vowelPoints+3;
       } else {
-        vowelPoints++;
+      vowelPoints = vowelPoints++;
       }
-    
-	  }
   console.log(`${word} is worth a total of ${vowelPoints}.`)
 return vowelPoints
+  }
 }
 
 let scrabbleScore;
 
-const scoringAlgorithms = [];
+const scoringAlgorithms = [let simpleScore ={
+name:"Simple Score",
+description: "Each letter is worth 1 point.",
+scorerFunction: simpleScore()
+}];
 
 function scorerPrompt() {}
 
