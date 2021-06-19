@@ -12,8 +12,11 @@ const oldPointStructure = {
   10: ['Q', 'Z']
 };
 
+let userWord = ""; 
 function oldScrabbleScorer(word) {
+
 	word = word.toUpperCase();
+
 	let letterPoints = "";
  
 	for (let i = 0; i < word.length; i++) {
@@ -22,14 +25,20 @@ function oldScrabbleScorer(word) {
  
 		 if (oldPointStructure[pointValue].includes(word[i])) {
 			letterPoints += `Points for '${word[i]}': ${pointValue}\n`
-      
-		 }
     
+		 }
 	  }
 	}
   console.log(letterPoints);
 	return letterPoints;
  }
+
+let scrabbleOjbect ={
+  name:"Scrabble",
+  description:"The traditional scoring algorithm.",
+  scorerFunction: oldScrabbleScorer()
+}
+
 
 // your job is to finish writing these functions and variables that we've named //
 // don't change the names or your program won't work as expected. //
@@ -45,9 +54,12 @@ function simpleScore(word) {
   for (let i = 0; i < word.length; i++){
      wordPoints++;
   }
-  console.log(`${word} is worth a total of ${wordPoints}.`);
-
   return wordPoints
+}
+let simpleScoreObject ={
+name:"Simple Score",
+description: "Each letter is worth 1 point.",
+scorerFunction: simpleScore()
 }
 
 function vowelBonusScore(word){
@@ -61,20 +73,34 @@ function vowelBonusScore(word){
       } else {
       vowelPoints = vowelPoints++;
       }
-  console.log(`${word} is worth a total of ${vowelPoints}.`)
 return vowelPoints
   }
 }
 
+let vowelScoreObject ={
+  name:"Bonus Vowels",
+  description:"Vowels are 3 pts, consonants are 1 pt.",
+  scorerFunction: vowelBonusScore()
+}
 let scrabbleScore;
 
-const scoringAlgorithms = [let simpleScore ={
-name:"Simple Score",
-description: "Each letter is worth 1 point.",
-scorerFunction: simpleScore()
-}];
+const scoringAlgorithms = [simpleScoreObject, vowelScoreObject, scrabbleObject]
 
-function scorerPrompt() {}
+function scorerPrompt() {
+  console.log(`Which scoring algorithm would you like to use?
+  
+  0 - ${scoringAlgorithms[0].name}: ${scoringAlgorithms[0].description}
+  1 - ${scoringAlgorithms[1].name}: ${scoringAlgorithms[1].description}
+  2 - ${scoringAlgorithms[2].name}: ${scoringAlgorithms[2].description} `);
+  
+let scorerChoice = input.question("Enter 0, 1, or 2: ");
+scorerChoice = Numer(scorerChoice);
+while (scorerChoice !== 0 && scorerChoice !== 1 && scorerChoice !== 2){
+scorerChoice = input.question("Invalid input. Please enter 0, 1, or 2: ")
+scorerChoice = Number(scorerChoice);
+}
+console.log(`Score for ${userWord}: ${scoringAlgorithms[scorerChoice].scorerFunction(userWord)}`)
+}
 
 function transform() {};
 
@@ -82,9 +108,7 @@ let newPointStructure;
 
 function runProgram() {
    initialPrompt();
-   oldScrabbleScorer(userWord);
-   simpleScore(userWord);
-   vowelBonusScore(userWord);
+   scorerPrompt();
 }
 
 // Don't write any code below this line //
