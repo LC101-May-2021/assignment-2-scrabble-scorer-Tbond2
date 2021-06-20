@@ -80,7 +80,7 @@ let scrabbleScore = function(word){
   word = word.toLowerCase();
   let letterPoints = 0;
   for(let i = 0; i < word.length;i++){
-    letterpoints += Number(newPointStructure[word[i]]);
+    letterPoints += Number(newPointStructure[word[i]]);
   }
 return letterPoints;
 };
@@ -110,7 +110,7 @@ console.log(`Score for ${userWord}: ${scoringAlgorithms[scorerChoice].scoringFun
 function transform(object) {
   let newScoreObject = {};
   for(item in object){
-    (i=0; i < object[item].length; i++){
+    for(i = 0; i < object[item].length; i++){
       newScoreObject[object[item][i].toLowerCase()] = Number(item);
     }
   }
